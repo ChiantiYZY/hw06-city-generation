@@ -32,7 +32,7 @@ export default class Lsytem {
 
     constructor(it: number)
     {
-        this.iteration = 8;
+        this.iteration = 20;
         this.gridIter = 5;
         this.expanse.setRules();
         this.drawing.setRule();
@@ -538,17 +538,7 @@ export default class Lsytem {
             mat4.fromScaling(sizeUp, size);
 
             mat4.multiply(transform, sizeUp, transform);
-            //mat4.multiply(transform, roadTrans, transform);
-
-
-            // mat4.multiply(translate, scalation, translate);
-            // mat4.multiply(transform, rotate, translate);
-
-
-            //if the grammar is F, meaning that we need to show it on the screen
             if(this.isMesh)
-            //if(gridGram[i] == 'F' || gridGram[i] == '-' || grammar[i] == '+')
-            //if(gridGram[i] == 'G')
             {
 
                 this.curSQ.transArray1.push(transform[0] );
@@ -577,19 +567,6 @@ export default class Lsytem {
 
         return count;
 
-        //return sq;
-
-        // let array1: Float32Array = new Float32Array(sq.transArray1);
-        // let array2: Float32Array = new Float32Array(sq.transArray2);
-        // let array3: Float32Array = new Float32Array(sq.transArray3);
-        // let array4: Float32Array = new Float32Array(sq.transArray4);
-        // let ColorsArray: number[] = [0.0, 0.0, 0.0, 1.0]; // black
-        // let colors: Float32Array = new Float32Array(ColorsArray);
-
-        // sq.setInstanceVBOs2(array1, array2, array3, array4, colors);
-        // sq.setNumInstances(count); // grid of "particles"
-
-        // return count;
 
     }
 

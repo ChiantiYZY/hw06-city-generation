@@ -7,7 +7,7 @@ uniform float u_Time;
 uniform float u_Terrian;
 uniform float u_Density;
 
-in vec2 fs_Pos;
+in vec4 fs_Pos;
 out vec4 out_Col;
 
 
@@ -56,7 +56,7 @@ void main() {
 
 
 	//camera ray
-	vec3 dir = normalize(vec3(fs_Pos, 1.0) + light * 0.3);
+	vec3 dir = normalize(vec3(fs_Pos.xy, 1.0) + light * 0.3);
 	
     //Vignetting
 	//dir *= .7 + .3*pow(q.x*q.y*(1.-q.x)*(1.-q.y)*16., .1);
@@ -64,6 +64,10 @@ void main() {
 	//out_Col = vec4(col, 1.);
 
     out_Col = vec4(skyColor(dir), 1.0);
+
+
+
+    //ut_Col = vec4(fs_Pos) + vec4(1, 1, 1, 0);
 
   //out_Col = vec4(0.0, 0.0, 0.0, 1.0);
 }

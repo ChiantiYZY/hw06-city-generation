@@ -4,9 +4,16 @@ For this assignment, you will generate a collection of 3D buildings within the r
 
 For this assignment, you will generate a network of roads to form the basis of a city using a modified version of L-systems. As in homework 4, you will be using instanced rendering to draw your road networks.
 
-## Provided Resources
-You can use any base code for this assignment, so we haven't provided
-anything specific for you. We have included the paper [Real-time Procedural Generation of 'Pseudo Infinite' Cities](procedural_infinite_cities.pdf) for your reference. For visual inspiration, you might refer to Emily's [City Forgery](http://www.emilyhvo.com/city-forgery/) project.
+## Student Information
+**Name: **Chianti Yan
+
+**Penn ID:** 85100574
+
+
+
+## Demo and outputs 
+
+The live demo can be checked under this link: 
 
 ## Assignment Requirements
 - __(5 points)__ Based on the code you wrote for the previous assignment, create a 3D model of your terrain. You might consider using the subdivided plane we provided with homework 1. Since the road generation assignment was entirely 2D, your terrain need not have changes in elevation, since that would alter the placement of roads and buildings. The only elevation changes we require are having the water exist at a lower elevation than the land, with a small slope between the two.
@@ -27,12 +34,12 @@ INSTRUCTIONS.md. Don't worry about discussing runtime optimization for this
 project. Make sure your README contains the following information:
     - Your name and PennKey
     - Citation of any external resources you found helpful when implementing this
-    assignment.
+      assignment.
     - A link to your live github.io demo (refer to the pinned Piazza post on
       how to make a live demo through github.io)
     - An explanation of the techniques you used to generate your L-System features.
-    Please be as detailed as you can; not only will this help you explain your work
-    to recruiters, but it helps us understand your project when we grade it!
+      Please be as detailed as you can; not only will this help you explain your work
+      to recruiters, but it helps us understand your project when we grade it!
 
 
 ## Extra Credit (Up to 20 points)

@@ -48,10 +48,11 @@ export default class Building {
 
        // mat4.multiply(transform, position, transform);
        
+       mat4.multiply(transform, rotation, transform);
         mat4.multiply(transform, scalation, transform);
         //mat4.multiply(transform, movePivot, transform);
         mat4.multiply(transform, translate, transform);
-        mat4.multiply(transform, rotation, transform);
+       
         
 
         
@@ -114,7 +115,7 @@ export default class Building {
             newMesh.create();
             this.meshArray.push(newMesh);
 
-            var radius = (Math.random() - 0.5) * 3.14 * 2;
+            var radius = (Math.random() - 0.5);
             this.radiusArray.push(radius);
 
 
@@ -124,7 +125,7 @@ export default class Building {
                 y = this.cubeHeight + 18.0;
             }
             this.cubeHeight -= y;
-            var x = Math.random() * this.cubeSize;
+            var x = (Math.random() - 0.5) * 2.0 * this.cubeSize;
             trans += x;
             var tran = vec3.fromValues(trans, y, 0);
 
@@ -164,4 +165,82 @@ export default class Building {
 
     }
 
+
+    drawStoreBuilding(cube: Mesh) {
+        //this.translateArray.push(0.0);
+       // this.meshArray.push(cube);
+
+
+       var trans = 0;
+
+       var i = 0; 
+       // while(i < 4)
+       // {
+       while(this.cubeHeight > -18.0)
+       {
+           i++;
+           var randObj = Math.random() ;
+           let obj0: string;
+           if(randObj <= 0.5)
+               obj0 = readTextFile('./src/cube.obj');
+           else
+               obj0 = readTextFile('./src/pentagon.obj');
+
+           let newMesh = new Mesh(obj0, vec3.fromValues(0, 0, 0));
+           newMesh.create();
+           this.meshArray.push(newMesh);
+
+           var radius = (Math.random() - 0.5);
+           this.radiusArray.push(radius);
+
+
+           var y = Math.random() * 8.0;
+           if(this.cubeHeight - y < -18.0)
+           {
+               y = this.cubeHeight + 18.0;
+           }
+           this.cubeHeight -= y;
+
+
+           if(radius < 0.0)
+                trans = -trans - this.cubeSize;
+           else
+                trans += this.cubeSize;
+           var tran = vec3.fromValues(trans, y, 0);
+
+       
+           vec3.add(tran, tran, this.position);
+           this.translateArray.push(tran);
+
+           for(var j = 0; j < i; j++)
+           {
+               var r = Math.random();
+               var g = Math.random();
+               var b = Math.random();
+               let ColorsArray = vec3.fromValues(r, g, b); // brown
+               this.drawCube(this.meshArray[j], this.translateArray[j], ColorsArray, this.radiusArray[j], y);
+           }
+
+       }
+
+
+      // console.log(this.meshArray);
+
+
+       
+       for(var i = 0; i < this.meshArray.length; i++)
+       {
+           let col1: Float32Array = new Float32Array(this.meshArray[i].transArray1);
+           let col2: Float32Array = new Float32Array(this.meshArray[i].transArray2);
+           let col3: Float32Array = new Float32Array(this.meshArray[i].transArray3);
+           let col4: Float32Array = new Float32Array(this.meshArray[i].transArray4);
+           let colors: Float32Array = new Float32Array(this.meshArray[i].colorsArray);
+           this.meshArray[i].setInstanceVBOs(col1, col2, col3, col4, colors);
+           this.meshArray[i].setNumInstances(this.meshArray[i].numbs);
+       }
+
+
+       return this.meshArray;
+
+   }
 };

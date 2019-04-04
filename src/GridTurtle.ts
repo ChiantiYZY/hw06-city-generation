@@ -20,8 +20,6 @@ export default class GridTurtle {
   constructor() {
 
     this.position = vec3.fromValues(0, 0, 0);
-
-    
     this.prevPos = vec3.fromValues(0,0,0);
     this.up = vec3.fromValues(0, 1, 0);
     this.forward = vec3.fromValues(0, 0, 1);

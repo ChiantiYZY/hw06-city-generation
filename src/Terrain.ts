@@ -79,24 +79,32 @@ export default class Terrain {
 
     getDensity(position: vec3) {
 
-        
+       // vec3.multiply(position, position, vec3.fromValues(1.0 / 200.0, 1.0 / 200.0, 1.0 / 200.0));
 
-        var pos = vec2.fromValues(2 * position[0] / window.innerWidth - 1.0, 2 * position[1] / window.innerHeight - 1.0);
+        //position = vec3.fromValues(2.0 * (position[0] + 0.5), 2.0 * (position[1] + 0.5), 2.0 * (position[2] + 0.5));
+        var xy = vec2.fromValues(position[0], position[1]);
+        var yz = vec2.fromValues(position[1], position[2]);
+        var xz = vec2.fromValues(position[0], position[2]);
 
-        pos = vec2.fromValues(position[0], position[1]);
-        // console.log(pos);
-        // console.log(window.innerWidth);
-        var length = Math.sqrt(position[0] * position[0] + position[1] * position[1]);
+        var noise = vec2.create();
+        vec2.add(noise, xy, yz);
+        vec2.add(noise, noise, xz);
+        vec2.multiply(noise, noise, vec2.fromValues(0.01, 0.01));
+        var length = Math.sqrt(noise[0] * noise[0] + noise[1] * noise[1]);
 
-        var den_height = this.func(pos);
-        var terr_height = this.fbm6(vec2.fromValues(pos[0] * Math.sin(length), pos[1] * Math.sin(length)))
-            + this.fbm4(vec2.fromValues(pos[0] * Math.cos(length), pos[1] * Math.cos(length)));
+        var density = this.func(noise);
+
+        // console.log('position is: ');
+        // console.log(position);
+
+        var terr_height = this.fbm6(vec2.fromValues(noise[0] * Math.sin(length), noise[1] * Math.sin(length)))
+            + this.fbm4(vec2.fromValues(noise[0] * Math.cos(length), noise[1] * Math.cos(length)));
 
         if (terr_height < 0.2) {
-            den_height = 0.0;
+            density = 0.0;
         }
 
 
-        return den_height;
+        return density;
     }
 };
