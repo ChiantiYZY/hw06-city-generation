@@ -175,8 +175,7 @@ float interpNoise3D(float x, float y, float z) {
 
 
 void main() {
-  //fs_Pos = vs_Pos.xy;
-  //gl_Position = vs_Pos;
+
 
     vec4 pos = vs_Pos;
 
@@ -200,8 +199,5 @@ void main() {
     fs_Pos = pos;
 
     gl_Position = u_ViewProj * u_Model * pos;
-    //gl_Position = pos;
 
-
-    //gl_Position = u_ViewProj * vs_Pos;
 }
