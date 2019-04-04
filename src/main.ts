@@ -156,6 +156,7 @@ function loadScene() {
       if(!is_Forbidden(a, b, draw))
       {
         
+        
         var density = map.getDensity(vec3.fromValues(a, b, 0));
         //console.log(density);
 
@@ -175,6 +176,8 @@ function loadScene() {
           var tmpBuild = new Building(-5, 5, vec3.fromValues(x, 0, z));
           store = store.concat(tmpBuild.drawStoreBuilding(cube));
         }
+
+        
         
 
         /*
@@ -198,6 +201,8 @@ function loadScene() {
        }
 
        */
+
+       
 
     }
   }

@@ -85,6 +85,14 @@ I think this checking method gives the correct result about where to put the bui
 
   
 
+## Extra Explanation
+
+I understand that my rode intersection and mapping is not visually correct. It is the issue about the dismatch between my GPU terrain and my CPU terrain. Since I messed up the the coordinate, the intersection check is not correct, and the density I called from the **main.js** is always about 0.33-0.36, which make the in water check invalid. However, I do think my rasterization algorithm is logically correct. 
+
+Also, since the density is somehow not showing the right value, the buildings are generated as if they are deliberately splited into 3 ranges, which is not true. The buildings are generated in my **loadScene** function, and I also left a purely random generation method in my codes such that you can test the visual effects of the different types of buidings mixing together. It should be something like this: 
+
+![](mix.jpeg)
+
 ## External References 
 
 - **Intersection Algorithm** 
@@ -98,5 +106,9 @@ I think this checking method gives the correct result about where to put the bui
 - **Procedural Sky**
 
   <https://www.shadertoy.com/view/lt2SR1>
+
+  
+
+  
 
   
